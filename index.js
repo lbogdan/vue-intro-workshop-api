@@ -20,6 +20,12 @@ const server = jsonServer.create();
 const router = jsonServer.router(dbPath);
 const middlewares = jsonServer.defaults();
 
+router.render = (req, res) => {
+  setTimeout(function sendResponse() {
+    res.jsonp(res.locals.data);
+  }, 500 + Math.round(500 * Math.random()));
+}
+
 server.use(middlewares);
 server.use(router);
 server.listen(PORT, () => {
