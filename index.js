@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 8000;
+const port = process.env.PORT || 8000;
 
 function getDbPath(filename) {
   return path.resolve(__dirname, `data/${filename}`);
@@ -28,6 +28,6 @@ router.render = (req, res) => {
 
 server.use(middlewares);
 server.use(router);
-server.listen(PORT, () => {
-  console.log(`Movies API server is running on port ${PORT}...`);
+server.listen(port, () => {
+  console.log(`Movies API server is running on port ${port}...`);
 });
